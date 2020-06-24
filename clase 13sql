@@ -1,0 +1,48 @@
+use sakila;
+
+-- 1
+INSERT INTO customer
+(store_id, first_name, last_name, email, address_id, active, last_update)
+VALUES(1, 'Lolo', 'Grasso', 'lolo@gmail.com',(SELECT MAX (address_id) 
+											  FROM address 
+											  JOIN city USING (city_id)
+											  JOIN country USING (country_id)
+											  WHERE country = "United States"), 1 , CURRENT_TIMESTAMP);
+
+-- 2
+
+-- 3 
+UPDATE film 
+SET release_year = "2001"
+WHERE rating = "G"
+
+UPDATE film 
+SET release_year = "2006"
+WHERE rating = "PG"
+
+UPDATE film 
+SET release_year = "2010"
+WHERE rating = "PG-13"
+
+UPDATE film 
+SET release_year = "2003"
+WHERE rating = "R"
+
+UPDATE film 
+SET release_year = "2020"
+WHERE rating = "NC-17"
+
+-- 4 
+SELECT rental_date  
+FROM rental r 
+WHERE return_date = NULL ;
+
+
+-- 5 
+DELETE FROM film
+WHERE film_id=0;
+
+-- 6 
+
+
+
